@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aafiyah ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+.container{
+padding-top:80px;
+}
+
+h1{
+font-size:3em;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px white;}
+to{ text-shadow:0 0 30px pink;}
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4b7d;
+cursor:pointer;
+margin-top:30px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.hidden{
+display:none;
+}
+
+.slideshow{
+margin-top:30px;
+}
+
+.slideshow img{
+width:280px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+#letter{
+font-size:22px;
+margin-top:30px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+min-height:120px;
+}
+
+.hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.heart{
+position:absolute;
+font-size:24px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px)}
+100%{transform:translateY(100vh)}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎂 Happy Birthday My Angel Aafiyah ❤️</h1>
+
+<p>From Arnold, with all my love 💕</p>
+
+<button onclick="startSurprise()">Click For Your Surprise</button>
+
+<div id="content" class="hidden">
+
+<div class="slideshow">
+<img id="slide" src="https://i.postimg.cc/9X1FmgBY/IMG-20250930-WA0038.jpg">
+</div>
+
+<div id="letter"></div>
+
+<button onclick="location.reload()">Replay ❤️</button>
+
+</div>
+
+</div>
+
+<div class="hearts"></div>
+
+<audio id="music" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function startSurprise(){
+document.getElementById("content").classList.remove("hidden");
+document.getElementById("music").play();
+startSlideshow();
+typeLetter();
+}
+
+const photos=[
+"https://i.postimg.cc/9X1FmgBY/IMG-20250930-WA0038.jpg",
+"https://i.postimg.cc/mk1d55L3/IMG-20221231-WA0015(1).jpg",
+"https://i.postimg.cc/L6LSqyt1/Screenshot-20260314-225607.png"
+];
+
+let index=0;
+
+function startSlideshow(){
+setInterval(()=>{
+index=(index+1)%photos.length;
+document.getElementById("slide").src=photos[index];
+},3000);
+}
+
+const text="Aafiyah, you are the most beautiful part of my life ❤️ Every moment with you feels magical. I hope today makes you smile the way you make me smile every day. Happy Birthday my angel. I love you forever. 💖";
+
+let i=0;
+
+function typeLetter(){
+const speed=50;
+function typing(){
+if(i<text.length){
+document.getElementById("letter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,speed);
+}
+}
+typing();
+}
+
+const heartsContainer=document.querySelector(".hearts");
+
+for(let i=0;i<50;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"%";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+heartsContainer.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
